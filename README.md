@@ -9,6 +9,8 @@ f1.c, f2.c, main.c
 Сборка: 
 $ gcc -c main.c f1.c f2.c
 $ gcc main.o f1.o f2.o -o rezult
+    или
+$ make -f Makefile_p1
 
 Запуск:
 ./rezult <делимое> <делитель>
@@ -28,6 +30,8 @@ $ gcc -c main.c f1.c f2.c
 $ ar rc liblab1.a f1.o f2.o
 $ ranlib liblab1.a
 $ gcc main.o -L. -llab1 -o rezultStatic
+    или
+$ make -f Makefile_p2
 
 Запуск:
 ./rezultStatic <делимое> <делитель>
@@ -48,6 +52,8 @@ $ gcc -fPIC -c f1.c -o f1PIC.o
 $ gcc -fPIC -c f2.c -o f2PIC.o
 $ gcc -shared -o liblab1dyn.so f1PIC.o f2PIC.o
 $ gcc main.o -L. -llab1dyn -o rezultDyn
+    или
+$ make -f Makefile_p3
 
 (!!) Дополнительно добавляем директорию проекта в переменную LD_LIBRARY_PATH:
     $ LD_LIBRARY_PATH=$(pwd)
@@ -67,9 +73,11 @@ $ gcc -fPIC -c f1.c -o f1PIC.o
 $ gcc -fPIC -c f2.c -o f2PIC.o
 $ gcc -shared -o libdivide.so f1PIC.o f2PIC.o
 $ gcc mainDL.c -ldl -o rezultDL
+    или
+$ make -f Makefile_p4
 
 Использование:
-./rezultDL <идентификатор ф-ии> <делимое> <делитель>
+./rezultDL <делимое> <делитель> <идентификатор ф-ии>
 
-(пример: ./rezultDL f1 100 3)
+(пример: ./rezultDL 100 3 f1)
 (f1 - деление нацело, ответ д.б. равен 30)
