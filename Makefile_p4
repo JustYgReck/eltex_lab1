@@ -1,16 +1,17 @@
 objects = mainDL.o f1PIC.o f2PIC.o
 libs = libdivide.so
-rezultDL : mainDL.o
+rezultDL : mainDL.o libdivide.so
 	gcc mainDL.o -o rezultDL -L. -ldl
 mainDL.o : mainDL.c
 	gcc -c mainDL.c
-libdivide.so : f1PIC.o f2PIC.o
-	gcc -shared -o libdivide.so f1PIC.o f2PIC.o
 f1PIC.o : f1.c
 	gcc -c f1.c -o f1PIC.o
 f2PIC.o : f2.c
 	gcc -c f2.c -o f2PIC.o
+libdivide.so : f1PIC.o f2PIC.o
+	gcc -shared -o libdivide.so f1PIC.o f2PIC.o
 #
 .PHONY : clean
+
 clean : 
-	-rm rezultDyn $(libs) $(objects)
+	-rm rezultDL $(libs) $(objects)

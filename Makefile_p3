@@ -5,7 +5,7 @@ rezultDyn : main.o  $(libs)
 main.o : main.c
 	gcc -c main.c
 liblab1dyn.so : f1PIC.o f2PIC.o
-	gcc -shared -o liblabdyn.so f1PIC.o f2PIC.o
+	gcc -shared -o liblab1dyn.so f1PIC.o f2PIC.o
 f1PIC.o : f1.c
 	gcc -c f1.c -o f1PIC.o
 f2PIC.o : f2.c
