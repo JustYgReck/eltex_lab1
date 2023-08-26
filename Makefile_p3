@@ -1,0 +1,16 @@
+objects = main.o f1PIC.o f2PIC.o
+libs = liblab1dyn.so
+rezultDyn : main.o  $(libs)
+	gcc main.o -o rezultDyn -L. -llab1dyn
+main.o : main.c
+	gcc -c main.c
+liblab1dyn.so : f1PIC.o f2PIC.o
+	gcc -shared -o liblabdyn.so f1PIC.o f2PIC.o
+f1PIC.o : f1.c
+	gcc -c f1.c -o f1PIC.o
+f2PIC.o : f2.c
+	gcc -c f2.c -o f2PIC.o
+#
+.PHONY : clean
+clean : 
+	-rm rezultDyn $(libs) $(objects)

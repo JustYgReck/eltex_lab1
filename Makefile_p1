@@ -1,0 +1,6 @@
+objects = main.o f1.o f2.o
+rezult : $(objects)
+	gcc -o rezult $(objects)
+.PHONY : clean
+clean : 
+	-rm rezult $(objects)
